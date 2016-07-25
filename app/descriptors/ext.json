@@ -1,0 +1,222 @@
+{
+  "name": "ext",
+  "prefix": "ext",
+  "uri": "http://ext",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "signalName",
+      "extends": [
+        "bpmn:ExclusiveGateway"
+      ],
+      "properties": [
+        {
+          "name": "signalName",
+          "isAttr": true,
+          "type": "String"
+        },
+
+      ]
+    },
+    {
+      "name": "signalCfg",
+      "extends": [
+        "bpmn:ExclusiveGateway"
+      ],
+      "properties": [
+        {
+          "name": "signalCfg",
+          "isAttr": true,
+          "type": "String"
+        },
+
+      ]
+    },
+    {
+      "name": "juel",
+      "extends": [
+        "bpmn:ExclusiveGateway"
+      ],
+      "properties": [
+        {
+          "name": "juel",
+          "isAttr": true,
+          "type": "Bool"
+        },
+
+      ]
+    },
+    {
+      "name": "expression",
+      "extends": [
+        "bpmn:ExclusiveGateway"
+      ],
+      "properties": [
+        {
+          "name": "expression",
+          "isAttr": true,
+          "type": "String"
+        },
+
+      ]
+    },
+    {
+      "name": "flowId",
+      "extends": [
+        "bpmn:SignalEventDefinition"
+      ],
+      "properties": [
+        {
+          "name": "flowId",
+          "isAttr": true,
+          "type": "String"
+        },
+
+      ]
+    },
+    {
+      "name": "expression",
+      "extends": [
+        "bpmn:SequenceFlow"
+      ],
+      "properties": [
+        {
+          "name": "expression",
+          "isAttr": true,
+          "type": "String"
+        },
+
+      ]
+    },
+    {
+      "name": "order",
+      "extends": [
+        "bpmn:SequenceFlow"
+      ],
+      "properties": [
+        {
+          "name": "order",
+          "isAttr": true,
+          "type": "String"
+        },
+
+      ]
+    },
+    {
+      "name": "html",
+      "extends": [
+        "bpmn:SelectorTask"
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "isAttr": true,
+          "type": "text"
+        },
+
+      ]
+    },
+    {
+      "name": "css",
+      "extends": [
+        "bpmn:SelectorTask"
+      ],
+      "properties": [
+        {
+          "name": "css",
+          "isAttr": true,
+          "type": "text"
+        },
+
+      ]
+    },
+    {
+      "name": "js",
+      "extends": [
+        "bpmn:SelectorTask"
+      ],
+      "properties": [
+        {
+          "name": "js",
+          "isAttr": true,
+          "type": "text"
+        },
+
+      ]
+    },
+    {
+      "name": "html",
+      "extends": [
+        "bpmn:UserTask"
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "isAttr": true,
+          "type": "text"
+        },
+
+      ]
+    },
+    {
+      "name": "css",
+      "extends": [
+        "bpmn:UserTask"
+      ],
+      "properties": [
+        {
+          "name": "css",
+          "isAttr": true,
+          "type": "text"
+        },
+
+      ]
+    },
+    {
+      "name": "js",
+      "extends": [
+        "bpmn:UserTask"
+      ],
+      "properties": [
+        {
+          "name": "js",
+          "isAttr": true,
+          "type": "text"
+        },
+
+      ]
+    },
+    {
+      "name": "resultVariable",
+      "extends": [
+        "bpmn:SelectorTask"
+      ],
+      "properties": [
+        {
+          "name": "resultVariable",
+          "isAttr": true,
+          "type": "text"
+        },
+
+      ]
+    },
+    {
+      "name": "flowId",
+      "extends": [
+        "bpmn:SubProcess","bpmn:EndEvent"
+      ],
+      "properties": [
+        {
+          "name": "flowId",
+          "isAttr": true,
+          "type": "Dropdown"
+        },
+
+      ]
+    }
+
+  ]
+}

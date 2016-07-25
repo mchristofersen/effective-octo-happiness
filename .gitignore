@@ -1,0 +1,4 @@
+dist/
+tmp/
+/app/processMap.txt
+/node_modules

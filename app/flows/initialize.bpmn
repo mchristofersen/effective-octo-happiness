@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:ext="http://ext" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="UA_SA_SUBAUTO_SASHA_MOTD" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_0e7j86h" name="">
+      <bpmn:outgoing>SequenceFlow_15q9k6q</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:scriptTask id="ScriptTask_1iyboew" name="Random MOTD" scriptFormat="juel" camunda:resultVariable="RandomMOTD">
+      <bpmn:incoming>SequenceFlow_15q9k6q</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_16kq3ku</bpmn:outgoing>
+      <bpmn:script>#{str:right(now().getTime(),4)%30}</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1s9pioq" name="SASHA MOTD Header" scriptFormat="juel" camunda:resultVariable="SASHAMOTDHeader">
+      <bpmn:incoming>SequenceFlow_16kq3ku</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ahyfx8</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{UACSS}#{CustomButton}#{'<div class="darkgreenbox"><p class="p-header">Did you know...</p>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_1a3ds9x" ext:signalCfg="{&#34;signals&#34;:[{&#34;order&#34;:1,&#34;id&#34;:&#34;oryx_886424CB-8D28-4666-98F5-E97AACBFAD52&#34;,&#34;name&#34;:&#34;0&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;0\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:2,&#34;id&#34;:&#34;oryx_618DBC0B-41A0-4815-AD4A-26CB3F8F8A3E&#34;,&#34;name&#34;:&#34;1&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;1\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:3,&#34;id&#34;:&#34;oryx_F5F39291-DC52-4C4D-B113-4A069D3D53B8&#34;,&#34;name&#34;:&#34;2&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;2\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:4,&#34;id&#34;:&#34;oryx_2892CC9D-9D97-4F4D-BB83-951C6FE22741&#34;,&#34;name&#34;:&#34;3&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;3\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:5,&#34;id&#34;:&#34;oryx_F1A024CD-4607-4B57-B55F-89025814C501&#34;,&#34;name&#34;:&#34;4&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;4\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:6,&#34;id&#34;:&#34;oryx_3B98248F-89D9-443A-A18E-285276181663&#34;,&#34;name&#34;:&#34;5&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;5\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:7,&#34;id&#34;:&#34;oryx_C3C5A2A2-600D-4109-B040-0A36BA886131&#34;,&#34;name&#34;:&#34;6&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;6\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:8,&#34;id&#34;:&#34;oryx_E864A2D6-7206-468F-9DDC-4BE4811B410F&#34;,&#34;name&#34;:&#34;7&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;7\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:9,&#34;id&#34;:&#34;oryx_8707FD17-6FB8-45F0-AB1A-77A5677EB06A&#34;,&#34;name&#34;:&#34;8&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;8\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:10,&#34;id&#34;:&#34;oryx_DA6E54DC-559F-4CD6-8410-6C8D31F2FFE9&#34;,&#34;name&#34;:&#34;9&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;9\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:11,&#34;id&#34;:&#34;oryx_AC3E6BDD-3862-42F9-B993-DF98D30FB648&#34;,&#34;name&#34;:&#34;10&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;10\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:12,&#34;id&#34;:&#34;oryx_981B9737-8597-4BDE-ABC8-D67FEDFE28A3&#34;,&#34;name&#34;:&#34;11&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;11\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:13,&#34;id&#34;:&#34;oryx_2283B41D-451E-409F-9940-BDDA3CF39CCE&#34;,&#34;name&#34;:&#34;12&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;12\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:14,&#34;id&#34;:&#34;oryx_6C450AE8-501A-4764-A7BA-517B77CE45BB&#34;,&#34;name&#34;:&#34;13&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;13\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:15,&#34;id&#34;:&#34;oryx_B7EA829D-6559-40A8-975B-F3B3FF08E677&#34;,&#34;name&#34;:&#34;14&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;14\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:16,&#34;id&#34;:&#34;oryx_8A6DDAFD-9FFF-4EB4-8DC9-9E4193AB247B&#34;,&#34;name&#34;:&#34;15&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;15\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:17,&#34;id&#34;:&#34;oryx_16F0B5B2-46A3-4868-A53D-9B779247673C&#34;,&#34;name&#34;:&#34;16&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;16\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:18,&#34;id&#34;:&#34;oryx_9B175858-C6CA-4731-AED1-57BA4CCDC4E3&#34;,&#34;name&#34;:&#34;17&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;17\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:19,&#34;id&#34;:&#34;oryx_16EFB98D-5DDB-4D4A-A158-1EC13BF5D3EE&#34;,&#34;name&#34;:&#34;18&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;18\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:20,&#34;id&#34;:&#34;oryx_532A765A-D1E4-409A-B389-E0750F7650AC&#34;,&#34;name&#34;:&#34;19&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;19\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:21,&#34;id&#34;:&#34;oryx_2CABD128-4FDB-4FD5-8C07-17DA45EC845D&#34;,&#34;name&#34;:&#34;20&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;20\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:22,&#34;id&#34;:&#34;oryx_51397623-A17D-48A0-A9B2-CCD037226BE7&#34;,&#34;name&#34;:&#34;21&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;21\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:23,&#34;id&#34;:&#34;oryx_C3403793-285E-4F6F-9EB1-04982F8DB48A&#34;,&#34;name&#34;:&#34;22&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;22\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:24,&#34;id&#34;:&#34;oryx_DB409F90-A479-488E-A7F6-6F9758CDCAD8&#34;,&#34;name&#34;:&#34;23&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;23\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:25,&#34;id&#34;:&#34;oryx_185F789E-4526-438C-923A-ED7D00230589&#34;,&#34;name&#34;:&#34;24&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;24\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:26,&#34;id&#34;:&#34;oryx_18053ED5-BF9C-4B74-9B80-5B3DBF917EA5&#34;,&#34;name&#34;:&#34;25&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;25\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:27,&#34;id&#34;:&#34;oryx_45D44DB0-2A82-4938-97A9-DC595427D050&#34;,&#34;name&#34;:&#34;26&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;26\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:28,&#34;id&#34;:&#34;oryx_F2F3F05E-E692-4AD4-9681-E660AC8D0982&#34;,&#34;name&#34;:&#34;27&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;27\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:29,&#34;id&#34;:&#34;oryx_F7622663-A653-452A-866F-6F79430FCCFE&#34;,&#34;name&#34;:&#34;28&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;28\&#34;}&#34;,&#34;default&#34;:false},{&#34;order&#34;:30,&#34;id&#34;:&#34;oryx_2D2BD65C-882E-420F-AE99-394929F3B9A2&#34;,&#34;name&#34;:&#34;29&#34;,&#34;expression&#34;:&#34;#{RandomMOTD==\&#34;29\&#34;}&#34;,&#34;default&#34;:true}]}" ext:juel="true">
+      <bpmn:incoming>SequenceFlow_0ahyfx8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0gscyy8</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0hff0gl</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1jg011h</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0xwvpiu</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0gl5muw</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0dhjuip</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0vszfvz</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1ghc0ao</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_17rjuca</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0wxjb6a</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0bkm02o</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_17yyqcg</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1ve53co</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0q6gcib</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1v6spzb</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0epgu7j</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0fvcbxy</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_05xnbjm</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1p18nbp</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0uaaqxv</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_02nfugk</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_08c4yuu</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1afkt1p</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_06lct64</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0brx95f</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_09za89b</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0dx05cy</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0c9iavd</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_08ris9a</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0u8wwpx</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:scriptTask id="ScriptTask_0a3lbpx" name="SASHA MOTD_20" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0hff0gl</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1yrbc17</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>ISP - Internet Service Provider - a company that provides the circuit to a venue.</p>" : "<p>Restore and Repair - This happens when the technician is actively repairing the customer issue.  This would mean that the dispatch has been completed and the technician is on site repairing or replacing equipment.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0t9baup" name="SASHA MOTD_19" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_1jg011h</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_021qikt</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>IP Address - Internet Protocol - this is an address  given to a device by the server which allows it to communicate on the internet. - example: 192.15.9.162</p>" : "<p>Restore and Repair - This happens when the technician is actively repairing the customer issue.  This would mean that the dispatch has been completed and the technician is on site repairing or replacing equipment.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_03zn99e" name="SASHA MOTD_18" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0xwvpiu</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1nfbccv</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>IOS - iPhone Operating System - This is the operating system that iPhones and iPads use.</p>" : "<p>Restore and Repair - This happens when the technician is actively repairing the customer issue.  This would mean that the dispatch has been completed and the technician is on site repairing or replacing equipment.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1xvuv3q" name="SASHA MOTD_17" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0dhjuip</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0rte4g0</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>GUI - Graphical User Interface-  A user interface that includes graphical elements such as windows, icons, and buttons. </p>" : "<p>Restore and Repair - This happens when the technician is actively repairing the customer issue.  This would mean that the dispatch has been completed and the technician is on site repairing or replacing equipment.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1sqakl6" name="SASHA MOTD_16" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0gl5muw</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0po2gld</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>AUP - Acceptable Use Policy - Terms of service that any user must agree to before getting connected to the network. Typically they agree by clicking a check box or selecting a connect button just before getting through the welcome page.</p>" : "<p>Restore and Repair - This happens when the technician is actively repairing the customer issue.  This would mean that the dispatch has been completed and the technician is on site repairing or replacing equipment.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0qstl0m" name="SASHA MOTD_15" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_1afkt1p</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_03w25vf</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>AP - Access Point - A network device that sends out a wireless signal at a venue.</p>" : "<p>Restore and Repair - This happens when the technician is actively repairing the customer issue.  This would mean that the dispatch has been completed and the technician is on site repairing or replacing equipment.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_179jhka" name="SASHA MOTD_14" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0vszfvz</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1jwhic4</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>GOLD - Guest On Lan Deployment is when AT&T Wi-Fi services owns and manages the server (NMD) at a location however the LAN (APs and Switches) are monitored and handled by a different group.</p>' : WorkType=="ATTC" ? '<p>ThinkRite is an IBM internal application that is supported by AT&T</p>' : '<p>Restore and Repair - This happens when the technician is actively repairing the customer issue.  This would mean that the dispatch has been completed and the technician is on site repairing or replacing equipment.</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0d513m1" name="SASHA MOTD_13" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_1ghc0ao</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1c4trkf</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>Firewall - A firewall is used for security and to protect devices connected to a wifi network.</p>' : WorkType=="ATTC" ? '<p>A minimum data set (MDS) is used to collect all of the required information the Tier 2 specialist needs to research and troubleshoot the reported issue</p>' : '<p>Dispatch - if a field technician is needed, a dispatch will be scheduled and performed.  This could be someone going to an AT&T Central Office (CO) or Data Center location; or it could mean someone getting into a vehicle and driving to the Customer Premise (CP).</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_17x4lwp" name="SASHA MOTD_12" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_17rjuca</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1xet0zk</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>DNS - Domain Name System - these servers translate the IP address of websites into URLs. - example: 216.58.216.110 to www.Google.com</p>' : WorkType=="ATTC" ? '<p>Connect Tier 2 – A specialist team, engaged by an IE ticket in AOTS,that troubleshoots and resolves application issues for the AT&T Connect software on various platforms</p>' : '<p>Advanced Status/Diagnosis - If the Initial Diagnosis fails, or has certain results, the CMC Tier 2 will need to be engaged.  This engagement is typically automatic, but other times this CM task will perform this step. Advanced Diagnosis is a term used when specialized support is needed to troubleshoot an issue.  In Carrier Management this could be a CMC Tier 2 technician or advanced automation such as Ruby Robo.  In most cases this has happened because of an issue with automation within BMP such as CTP issues and others.</p>'}#{"</div>"}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0yb5jml" name="SASHA MOTD_11" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_17yyqcg</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0pvzj90</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>DMCA - Digital Millenium Copyright Act is a law to protect producers of movies and music from being illegally downloaded or accessed.</p>' : WorkType=="ATTC" ? '<p>Audio Tier 2 – A specialist team, engaged by an IE ticket in AOTS, that troubleshoots and resolves audio issues in Teleconferencing solutions</p>' : '<p>Initial Diagnosis - This is performed on the circuit by automation within the BMP ticketing system.</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0i0p6nk" name="SASHA MOTD_10" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_1ve53co</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1qn0q7d</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>PMS - The Property Management System - allows for venues to control many of their business functions through the AT&T Wi-Fi system. Functions include: Allowing for folio billing, and credit card transactions.</p>' : WorkType=="ATTC" ? '<p>Lync IP Teleconferencing – Used when a customer is connecting to a Lync meeting with AT&T Teleconferencing Audio</p>' : '<p>BMP tickets are used when an access provider needs to be engaged to resolve a circuit issue.</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1qp35xv" name="SASHA MOTD_9" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0q6gcib</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0064d0j</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>Hotspot - A hotspot is any public venue where end users can go to access the internet</p>' : WorkType=="ATTC" ? '<p>Web Meeting – A Cisco rebranded product that allows customers to have a custom launch page for their conferencing</p>' : '<p>Internal Engagement tickets are meant to be a single location for specialists to work on a ticket.</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_046j5di" name="SASHA MOTD_8" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_08c4yuu</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1hgownw</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>Ethernet - Ethernet cable is the wired cabling used to connect a computer to a port; sometimes known as a cat5 cable.</p>' : WorkType=="ATTC" ? '<p>Teleconferencing – Customers that are using the audio portion of the Connect meeting only. The web or participant applications are not utilized</p>' : '<p>SASHA stands for Service Assurance Structured Handling Automation.</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1n8umcq" name="SASHA MOTD_7" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_06lct64</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_12j2oy1</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>POE - Power Over Ethernet - Power over Ethernet (PoE) is a technology for wired Ethernet LANs (local area networks) that allows the electrical current necessary for the operation of each device to be carried by the data cables rather than by power cords.</p>' : WorkType=="ATTC" ? '<p>Host Code – The host specific code that will be dialed to join and open the conference bridge</p>' : '<p>Power and LCON - This happens whenever GOLIATH is unable to determine the status of power at a location.  To provide additional service, the customer must be contacted to gather site information and power status.</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_09rlisr" name="SASHA MOTD_6" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0brx95f</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_02n7zpq</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>Folio - A folio connection allows a guest to bill their internet connection. This service is not offered at all hotels.</p>' : WorkType=="ATTC" ? '<p>Access Code – The user specific code that a dialer will enter to join the conference bridge</p>' : '<p>When a Ticket is in Carrier Management it can go back and forth between steps.  As an example, an issue could be in Dispatch status, but then moved to Deferred.  After the Deferral is over it can move back to Dispatch status. Also, some steps can be skipped.  The Advanced Status/Diagnosis could resolve an issue and no other tasks may be required.</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0wrauw4" name="SASHA MOTD_5" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_09za89b</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0n03uoe</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>Puck - A puck is a device that is used in some hotel rooms when a wired connection is available. When present, a device will plug into a puck with an Ethernet cable to receive internet.</p>" : WorkType=="ATTC" ? '<p>Participant Application – The full desktop version of AT&T Connect with all of the available features</p>' : '<p>Deferred - This happens if the technician is unable to perform work due to either conditions in the surrounding area (Hurricane, snow, etc.) or because they do not have access to the equipment (CP is only available from 9-5 Monday through Friday and it is currently not within those time frames).</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1cq8zwt" name="SASHA MOTD_4" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0dx05cy</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0zdt8hm</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>Splash Page - This is the initial page a device will receive once connected to a Wi-Fi network. Guests will have to either pay/login or accept terms and agreements first to get past this page and on to the internet.</p>" : WorkType=="ATTC" ? "<p>Web Application – A stripped down version of the Participant Application. This version does not allow desktop sharing</p>" : "<p>Restore and Repair - This happens when the technician is actively repairing the customer issue.  This would mean that the dispatch has been completed and the technician is on site repairing or replacing equipment.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0ccsmg1" name="SASHA MOTD_3" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0wxjb6a</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0hkq6gn</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>Wispr - Wireless Internet Service Provider roaming - WISPr allows for many AT&T mobile devices to get internet at an AT&T hotspot after connecting to the SSID. With WISPr, the device automatically bypasses the splash page.</p>' : WorkType=="ATTC" ? '<p>Webex – Cisco’s Teleconferencing Solution</p>' : '<p>Dispatch - if a field technician is needed, a dispatch will be scheduled and performed.  This could be someone going to an AT&T Central Office (CO) or Data Center location; or it could mean someone getting into a vehicle and driving to the Customer Premise (CP).</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0m284h2" name="SASHA MOTD_2" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0bkm02o</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1t6qreo</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>MAC Address - Media Access Control address - a unique identifier given to each network interface card. A MAC never changes and is assigned to every wireless and wired card. - Example: 00:1b:63:37:b6:f8</p>' : WorkType =="ATTC" ? '<p>IE – AT&T Connect Integrated Edition</p>' : '<p>Advanced Status/Diagnosis - If the Initial Diagnosis fails, or has certain results, the CMC Tier 2 will need to be engaged.  This engagement is typically automatic, but other times this CM task will perform this step. Advanced Diagnosis is a term used when specialized support is needed to troubleshoot an issue.  In Carrier Management this could be a CMC Tier 2 technician or advanced automation such as Ruby Robo.  In most cases this has happened because of an issue with automation within BMP such as CTP issues and others.</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1va9phf" name="SASHA MOTD_1" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0gscyy8</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_08dsft3</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? '<p>By knowing what block of IPs a device is getting an IP address from, we are able to serve them a specific Splash page. Knowing the port the device is connecting to is not necessary because we know their IP is from a specific VLAN.<p>' : WorkType=="ATTC" ? '<p>EE – AT&T Connect Enterprise Edition</p>' : '<p>Initial Diagnosis - This is performed on the circuit by automation within the BMP ticketing system.</p>'}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:endEvent id="EndEvent_18b7zk3" name="EndMOTD">
+      <bpmn:incoming>SequenceFlow_1yrbc17</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_021qikt</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1nfbccv</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0rte4g0</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0po2gld</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_03w25vf</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1jwhic4</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1c4trkf</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1xet0zk</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0pvzj90</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1qn0q7d</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0064d0j</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1hgownw</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_12j2oy1</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_02n7zpq</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0n03uoe</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0zdt8hm</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0hkq6gn</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1t6qreo</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_08dsft3</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0efibzj</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_12xkck7</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0ptckb2</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_03e9x78</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0fpbslm</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0svyd1g</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_07r9pc5</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1mqp3z5</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0damx4d</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1ftccot</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:scriptTask id="ScriptTask_0l3azws" name="SASHA MOTD_30" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0c9iavd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0efibzj</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>DHCP/ DHCPD - The Dynamic Host Configuration Protocol Daemon (DHCPD) is in charge of assigning IP addresses to network clients.</p>" : "<p>Central Command - Central Command is a tool used by venue employees to check the status of the venue’s health and perform other actions such as creating promo codes.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0sc9upw" name="SASHA MOTD_29" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_02nfugk</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_12xkck7</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>Wi-Fi Bridge - a device typically provided by the hotel at some locations that allows a computer with wired only access to connect wirelessly. Wi-Fi bridges plug into the computer via ethernet cable and allow the computer to pick up on the wireless signal.</p>" : "<p>Cold Transfer - Cold transfer is when an agent transfers the caller to another department and releases the call into the new IVR without waiting for another person to pick up the call.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0uas1cp" name="SASHA MOTD_28" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0uaaqxv</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ptckb2</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>Traceroute - A traceroute is a command performed on a computer which allows a device to map potential network failure points downstream.</p>" : "<p>Switch - A switch is a device with multiple ports capable of linking multiple network pieces of hardware.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1azdknv" name="SASHA MOTD_27" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_1p18nbp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_03e9x78</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>Switchplant - Every piece of hardware that is linked directly or indirectly from the head end switch.</p>" : "<p>MAC Address - Media Access Control address - a unique identifier given to each network interface card. A MAC never changes and is assigned to every wireless and wired card. - Example: 00:1b:63:37:b6:f8</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1f9h1v6" name="SASHA MOTD_26" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_05xnbjm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0fpbslm</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>Static IP - A static IP is a network IP address that is permanently assigned to a computer.</p>" : "<p>Active Monitoring and Management Platform (AMMP) - This is a network monitoring tool that gives the health status of a venue. It includes info about the NMD, NDU's, and other info to determine if the network is operational per venue.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1g7re47" name="SASHA MOTD_25" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0fvcbxy</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0svyd1g</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>RJ 45 - RJ 45 cords are used to network multiple devices together. Once connected, these devices can communicate and pass internet traffic between each other. RJ 45 is commonly known as an ethernet cable.</p>" : "<p>AT&T One Ticketing System (AOTS) - The IT AOTS Migration Project was created to select a ticketing solution to replace a defined set of ticketing systems from the four legacy companies, allowing departments to effectively communicate with each other while at the same time lowering operating expenses. After researching a number of ticketing solutions, a decision was made to use AOTS or AT&T One Ticketing System.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_067scg2" name="SASHA MOTD_24" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0epgu7j</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_07r9pc5</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>NOC - Network Operations Center - NOC is tier 2 support for the AT&T Wi-Fi network. This group monitors and resolves network/infrastructure issues. This team receives escalations from tier 1 if needed.</p>" : "<p>Out of Band (OOB) - A type of signalling in which the frequencies or time slots used to carry the signals are outside the bandwidth of the information or voice channel.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0ekflzd" name="SASHA MOTD_23" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_1v6spzb</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1mqp3z5</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>NMD - Network Management Device - is a server that is considered the 'brains' of the network. The NMD handles all guest traffic and communicates with all equipment/devices on the network to provide internet.</p>" : "<p>Customer Premise Equipment (CPE) - Customer Telecommunications terminal equipment located at your residence or place of business. CPE includes devices ranging from simple, single-line telephones to multi-line systems, such as key systems or PBXs, which offer sophisticated capabilities for handling voice or combined voice and data transmissions on and off the premises. Equipment that connects to or interfaces with the PSTN that belongs to the customer and resides at the customer's premises; for example, Balun, Diplexer, RG, Set Top Boxes, NetGear Ethernet switches.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_1bmyk9g" name="SASHA MOTD_22" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_0u8wwpx</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0damx4d</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>NDU - Network Distribution Unit - is any piece of equipment on the network such as an Access Point or Switch.</p>" : "<p>Test Window - A time slot in which the site is accessible for someone from dispatch to be able to test the issue.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="ScriptTask_0d1hiav" name="SASHA MOTD_21" scriptFormat="juel" camunda:resultVariable="SASHAMOTD">
+      <bpmn:incoming>SequenceFlow_08ris9a</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1ftccot</bpmn:outgoing>
+      <bpmn:script><![CDATA[#{SASHAMOTDHeader}#{IsTSC=="yes" ? "<p>LAN - Local Area Network - a connected link of devices that provides internet in a limited area.</p>" : "<p>Site Access Hours (SAH) - A time frame in which someone from dispatch would be able to have access to the site.</p>"}#{'</div>'}]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="SequenceFlow_15q9k6q" name="" sourceRef="StartEvent_0e7j86h" targetRef="ScriptTask_1iyboew" />
+    <bpmn:sequenceFlow id="SequenceFlow_16kq3ku" name="" sourceRef="ScriptTask_1iyboew" targetRef="ScriptTask_1s9pioq" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ahyfx8" name="" sourceRef="ScriptTask_1s9pioq" targetRef="ExclusiveGateway_1a3ds9x" />
+    <bpmn:sequenceFlow id="SequenceFlow_0gscyy8" name="0" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1va9phf" ext:expression="#{RandomMOTD==&#34;0&#34;}" ext:order="1" />
+    <bpmn:sequenceFlow id="SequenceFlow_0hff0gl" name="19" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0a3lbpx" ext:expression="#{RandomMOTD==&#34;19&#34;}" ext:order="20" />
+    <bpmn:sequenceFlow id="SequenceFlow_1jg011h" name="18" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0t9baup" ext:expression="#{RandomMOTD==&#34;18&#34;}" ext:order="19" />
+    <bpmn:sequenceFlow id="SequenceFlow_0xwvpiu" name="17" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_03zn99e" ext:expression="#{RandomMOTD==&#34;17&#34;}" ext:order="18" />
+    <bpmn:sequenceFlow id="SequenceFlow_0gl5muw" name="15" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1sqakl6" ext:expression="#{RandomMOTD==&#34;15&#34;}" ext:order="16" />
+    <bpmn:sequenceFlow id="SequenceFlow_0dhjuip" name="16" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1xvuv3q" ext:expression="#{RandomMOTD==&#34;16&#34;}" ext:order="17" />
+    <bpmn:sequenceFlow id="SequenceFlow_0vszfvz" name="13" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_179jhka" ext:expression="#{RandomMOTD==&#34;13&#34;}" ext:order="14" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ghc0ao" name="12" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0d513m1" ext:expression="#{RandomMOTD==&#34;12&#34;}" ext:order="13" />
+    <bpmn:sequenceFlow id="SequenceFlow_17rjuca" name="11" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_17x4lwp" ext:expression="#{RandomMOTD==&#34;11&#34;}" ext:order="12" />
+    <bpmn:sequenceFlow id="SequenceFlow_0wxjb6a" name="2" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0ccsmg1" ext:expression="#{RandomMOTD==&#34;2&#34;}" ext:order="3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0bkm02o" name="1" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0m284h2" ext:expression="#{RandomMOTD==&#34;1&#34;}" ext:order="2" />
+    <bpmn:sequenceFlow id="SequenceFlow_17yyqcg" name="10" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0yb5jml" ext:expression="#{RandomMOTD==&#34;10&#34;}" ext:order="11" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ve53co" name="9" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0i0p6nk" ext:expression="#{RandomMOTD==&#34;9&#34;}" ext:order="10" />
+    <bpmn:sequenceFlow id="SequenceFlow_0q6gcib" name="8" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1qp35xv" ext:expression="#{RandomMOTD==&#34;8&#34;}" ext:order="9" />
+    <bpmn:sequenceFlow id="SequenceFlow_1v6spzb" name="22" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0ekflzd" ext:expression="#{RandomMOTD==&#34;22&#34;}" ext:order="23" />
+    <bpmn:sequenceFlow id="SequenceFlow_0epgu7j" name="23" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_067scg2" ext:expression="#{RandomMOTD==&#34;23&#34;}" ext:order="24" />
+    <bpmn:sequenceFlow id="SequenceFlow_0fvcbxy" name="24" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1g7re47" ext:expression="#{RandomMOTD==&#34;24&#34;}" ext:order="25" />
+    <bpmn:sequenceFlow id="SequenceFlow_05xnbjm" name="25" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1f9h1v6" ext:expression="#{RandomMOTD==&#34;25&#34;}" ext:order="26" />
+    <bpmn:sequenceFlow id="SequenceFlow_1p18nbp" name="26" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1azdknv" ext:expression="#{RandomMOTD==&#34;26&#34;}" ext:order="27" />
+    <bpmn:sequenceFlow id="SequenceFlow_0uaaqxv" name="27" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0uas1cp" ext:expression="#{RandomMOTD==&#34;27&#34;}" ext:order="28" />
+    <bpmn:sequenceFlow id="SequenceFlow_02nfugk" name="28" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0sc9upw" ext:expression="#{RandomMOTD==&#34;28&#34;}" ext:order="29" />
+    <bpmn:sequenceFlow id="SequenceFlow_08c4yuu" name="7" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_046j5di" ext:expression="#{RandomMOTD==&#34;7&#34;}" ext:order="8" />
+    <bpmn:sequenceFlow id="SequenceFlow_1afkt1p" name="14" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0qstl0m" ext:expression="#{RandomMOTD==&#34;14&#34;}" ext:order="15" />
+    <bpmn:sequenceFlow id="SequenceFlow_06lct64" name="6" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1n8umcq" ext:expression="#{RandomMOTD==&#34;6&#34;}" ext:order="7" />
+    <bpmn:sequenceFlow id="SequenceFlow_0brx95f" name="5" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_09rlisr" ext:expression="#{RandomMOTD==&#34;5&#34;}" ext:order="6" />
+    <bpmn:sequenceFlow id="SequenceFlow_09za89b" name="4" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0wrauw4" ext:expression="#{RandomMOTD==&#34;4&#34;}" ext:order="5" />
+    <bpmn:sequenceFlow id="SequenceFlow_0dx05cy" name="3" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1cq8zwt" ext:expression="#{RandomMOTD==&#34;3&#34;}" ext:order="4" />
+    <bpmn:sequenceFlow id="SequenceFlow_0c9iavd" name="29" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0l3azws" ext:expression="#{RandomMOTD==&#34;29&#34;}" ext:order="30" />
+    <bpmn:sequenceFlow id="SequenceFlow_08ris9a" name="20" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_0d1hiav" ext:expression="#{RandomMOTD==&#34;20&#34;}" ext:order="21" />
+    <bpmn:sequenceFlow id="SequenceFlow_0u8wwpx" name="21" sourceRef="ExclusiveGateway_1a3ds9x" targetRef="ScriptTask_1bmyk9g" ext:expression="#{RandomMOTD==&#34;21&#34;}" ext:order="22" />
+    <bpmn:sequenceFlow id="SequenceFlow_1yrbc17" name="" sourceRef="ScriptTask_0a3lbpx" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_021qikt" name="" sourceRef="ScriptTask_0t9baup" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1nfbccv" name="" sourceRef="ScriptTask_03zn99e" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0rte4g0" name="" sourceRef="ScriptTask_1xvuv3q" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0po2gld" name="" sourceRef="ScriptTask_1sqakl6" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_03w25vf" name="" sourceRef="ScriptTask_0qstl0m" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1jwhic4" name="" sourceRef="ScriptTask_179jhka" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1c4trkf" name="" sourceRef="ScriptTask_0d513m1" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1xet0zk" name="" sourceRef="ScriptTask_17x4lwp" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0pvzj90" name="" sourceRef="ScriptTask_0yb5jml" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1qn0q7d" name="" sourceRef="ScriptTask_0i0p6nk" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0064d0j" name="" sourceRef="ScriptTask_1qp35xv" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1hgownw" name="" sourceRef="ScriptTask_046j5di" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_12j2oy1" name="" sourceRef="ScriptTask_1n8umcq" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_02n7zpq" name="" sourceRef="ScriptTask_09rlisr" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0n03uoe" name="" sourceRef="ScriptTask_0wrauw4" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0zdt8hm" name="" sourceRef="ScriptTask_1cq8zwt" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0hkq6gn" name="" sourceRef="ScriptTask_0ccsmg1" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1t6qreo" name="" sourceRef="ScriptTask_0m284h2" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_08dsft3" name="" sourceRef="ScriptTask_1va9phf" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0efibzj" name="" sourceRef="ScriptTask_0l3azws" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_12xkck7" name="" sourceRef="ScriptTask_0sc9upw" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ptckb2" name="" sourceRef="ScriptTask_0uas1cp" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_03e9x78" name="" sourceRef="ScriptTask_1azdknv" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0fpbslm" name="" sourceRef="ScriptTask_1f9h1v6" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0svyd1g" name="" sourceRef="ScriptTask_1g7re47" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_07r9pc5" name="" sourceRef="ScriptTask_067scg2" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1mqp3z5" name="" sourceRef="ScriptTask_0ekflzd" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_0damx4d" name="" sourceRef="ScriptTask_1bmyk9g" targetRef="EndEvent_18b7zk3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1ftccot" name="" sourceRef="ScriptTask_0d1hiav" targetRef="EndEvent_18b7zk3" />
+    <bpmn:textAnnotation id="TextAnnotation_045gxa4">    <bpmn:text>UA_SA_SUBAUTO_SASHA_MOTD</bpmn:text>
+</bpmn:textAnnotation>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="UA_SA_SUBAUTO_SASHA_MOTD">
+      <bpmndi:BPMNShape id="StartEvent_0e7j86h_di" bpmnElement="StartEvent_0e7j86h">
+        <dc:Bounds x="42" y="847" width="35" height="35" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="14.5" y="882" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1iyboew_di" bpmnElement="ScriptTask_1iyboew">
+        <dc:Bounds x="159" y="797" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1s9pioq_di" bpmnElement="ScriptTask_1s9pioq">
+        <dc:Bounds x="285" y="840" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_1a3ds9x_di" bpmnElement="ExclusiveGateway_1a3ds9x" isMarkerVisible="true">
+        <dc:Bounds x="440" y="835" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="420" y="885" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0a3lbpx_di" bpmnElement="ScriptTask_0a3lbpx">
+        <dc:Bounds x="817" y="1536" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0t9baup_di" bpmnElement="ScriptTask_0t9baup">
+        <dc:Bounds x="817" y="1462" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_03zn99e_di" bpmnElement="ScriptTask_03zn99e">
+        <dc:Bounds x="817" y="1387" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1xvuv3q_di" bpmnElement="ScriptTask_1xvuv3q">
+        <dc:Bounds x="817" y="1313" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1sqakl6_di" bpmnElement="ScriptTask_1sqakl6">
+        <dc:Bounds x="817" y="1239" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0qstl0m_di" bpmnElement="ScriptTask_0qstl0m">
+        <dc:Bounds x="817" y="1169" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_179jhka_di" bpmnElement="ScriptTask_179jhka">
+        <dc:Bounds x="817" y="1105" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0d513m1_di" bpmnElement="ScriptTask_0d513m1">
+        <dc:Bounds x="817" y="1046" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_17x4lwp_di" bpmnElement="ScriptTask_17x4lwp">
+        <dc:Bounds x="817" y="981" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0yb5jml_di" bpmnElement="ScriptTask_0yb5jml">
+        <dc:Bounds x="817" y="912" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0i0p6nk_di" bpmnElement="ScriptTask_0i0p6nk">
+        <dc:Bounds x="817" y="743" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1qp35xv_di" bpmnElement="ScriptTask_1qp35xv">
+        <dc:Bounds x="817" y="644" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_046j5di_di" bpmnElement="ScriptTask_046j5di">
+        <dc:Bounds x="817" y="569" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1n8umcq_di" bpmnElement="ScriptTask_1n8umcq">
+        <dc:Bounds x="817" y="495" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_09rlisr_di" bpmnElement="ScriptTask_09rlisr">
+        <dc:Bounds x="817" y="421" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0wrauw4_di" bpmnElement="ScriptTask_0wrauw4">
+        <dc:Bounds x="817" y="346" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1cq8zwt_di" bpmnElement="ScriptTask_1cq8zwt">
+        <dc:Bounds x="817" y="272" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0ccsmg1_di" bpmnElement="ScriptTask_0ccsmg1">
+        <dc:Bounds x="817" y="198" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0m284h2_di" bpmnElement="ScriptTask_0m284h2">
+        <dc:Bounds x="817" y="123" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1va9phf_di" bpmnElement="ScriptTask_1va9phf">
+        <dc:Bounds x="817" y="49" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_18b7zk3_di" bpmnElement="EndEvent_18b7zk3">
+        <dc:Bounds x="1142" y="853" width="35" height="35" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1114.5" y="888" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0l3azws_di" bpmnElement="ScriptTask_0l3azws">
+        <dc:Bounds x="815" y="2227" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0sc9upw_di" bpmnElement="ScriptTask_0sc9upw">
+        <dc:Bounds x="815" y="2152" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0uas1cp_di" bpmnElement="ScriptTask_0uas1cp">
+        <dc:Bounds x="815" y="2078" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1azdknv_di" bpmnElement="ScriptTask_1azdknv">
+        <dc:Bounds x="815" y="2004" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1f9h1v6_di" bpmnElement="ScriptTask_1f9h1v6">
+        <dc:Bounds x="815" y="1930" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1g7re47_di" bpmnElement="ScriptTask_1g7re47">
+        <dc:Bounds x="817" y="1862" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_067scg2_di" bpmnElement="ScriptTask_067scg2">
+        <dc:Bounds x="817" y="1797" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0ekflzd_di" bpmnElement="ScriptTask_0ekflzd">
+        <dc:Bounds x="817" y="1738" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_1bmyk9g_di" bpmnElement="ScriptTask_1bmyk9g">
+        <dc:Bounds x="817" y="1674" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ScriptTask_0d1hiav_di" bpmnElement="ScriptTask_0d1hiav">
+        <dc:Bounds x="817" y="1605" width="100" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_15q9k6q_di" bpmnElement="SequenceFlow_15q9k6q">
+        <di:waypoint xsi:type="dc:Point" x="77" y="865" />
+        <di:waypoint xsi:type="dc:Point" x="111" y="865" />
+        <di:waypoint xsi:type="dc:Point" x="111" y="817" />
+        <di:waypoint xsi:type="dc:Point" x="159" y="817" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="81" y="852.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_16kq3ku_di" bpmnElement="SequenceFlow_16kq3ku">
+        <di:waypoint xsi:type="dc:Point" x="259" y="817" />
+        <di:waypoint xsi:type="dc:Point" x="272" y="817" />
+        <di:waypoint xsi:type="dc:Point" x="272" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="285" y="860" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="220" y="835" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ahyfx8_di" bpmnElement="SequenceFlow_0ahyfx8">
+        <di:waypoint xsi:type="dc:Point" x="385" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="440" y="860" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="367.5" y="835" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0gscyy8_di" bpmnElement="SequenceFlow_0gscyy8">
+        <di:waypoint xsi:type="dc:Point" x="465" y="835" />
+        <di:waypoint xsi:type="dc:Point" x="465.5084674817751" y="70.87113977102348" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="69" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="442" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0hff0gl_di" bpmnElement="SequenceFlow_0hff0gl">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="768.3333129882812" y="1557.4598783562733" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1556" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1210.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1jg011h_di" bpmnElement="SequenceFlow_1jg011h">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="782.3333129882812" y="1483.3539624505902" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1482" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1173.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0xwvpiu_di" bpmnElement="SequenceFlow_0xwvpiu">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="800.5" y="1409.0245255213276" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1407" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1136" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0gl5muw_di" bpmnElement="SequenceFlow_0gl5muw">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="802.5" y="1260.3656516628025" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1259" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1062" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0dhjuip_di" bpmnElement="SequenceFlow_0dhjuip">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="800.5" y="1334.6950885920648" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1333" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1099" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0vszfvz_di" bpmnElement="SequenceFlow_0vszfvz">
+        <di:waypoint xsi:type="dc:Point" x="490" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="794.5" y="1126.9302988278566" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="995" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ghc0ao_di" bpmnElement="SequenceFlow_1ghc0ao">
+        <di:waypoint xsi:type="dc:Point" x="490" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="792.504638671875" y="1067.600861898594" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1066" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="965.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_17rjuca_di" bpmnElement="SequenceFlow_17rjuca">
+        <di:waypoint xsi:type="dc:Point" x="490" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="786.504638671875" y="1003.2714249693317" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1001" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="933" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0wxjb6a_di" bpmnElement="SequenceFlow_0wxjb6a">
+        <di:waypoint xsi:type="dc:Point" x="465" y="835" />
+        <di:waypoint xsi:type="dc:Point" x="597.500244140625" y="219.53001362954848" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="218" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="516.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0bkm02o_di" bpmnElement="SequenceFlow_0bkm02o">
+        <di:waypoint xsi:type="dc:Point" x="465" y="835" />
+        <di:waypoint xsi:type="dc:Point" x="534.500244140625" y="145.20057670028598" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="143" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="479" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_17yyqcg_di" bpmnElement="SequenceFlow_17yyqcg">
+        <di:waypoint xsi:type="dc:Point" x="490" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="769.305634894001" y="934.7497802385634" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="932" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="898.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ve53co_di" bpmnElement="SequenceFlow_1ve53co">
+        <di:waypoint xsi:type="dc:Point" x="490" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="803.992919921875" y="764.6125511108066" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="763" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="789" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0q6gcib_di" bpmnElement="SequenceFlow_0q6gcib">
+        <di:waypoint xsi:type="dc:Point" x="490" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="815.8931992691953" y="656.0788358366094" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="664" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="739.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1v6spzb_di" bpmnElement="SequenceFlow_1v6spzb">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="716.3333129882812" y="1758.158873858525" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1758" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1311.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0epgu7j_di" bpmnElement="SequenceFlow_0epgu7j">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="694.3333129882812" y="1817.4883107877877" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1817" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1341" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0fvcbxy_di" bpmnElement="SequenceFlow_0fvcbxy">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="670.3333129882812" y="1881.8177477170502" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1882" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1373.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_05xnbjm_di" bpmnElement="SequenceFlow_05xnbjm">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="631.500244140625" y="1949.5" />
+        <di:waypoint xsi:type="dc:Point" x="815" y="1950" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1407.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1p18nbp_di" bpmnElement="SequenceFlow_1p18nbp">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="591.500244140625" y="2023.8294369292626" />
+        <di:waypoint xsi:type="dc:Point" x="815" y="2024" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1432" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0uaaqxv_di" bpmnElement="SequenceFlow_0uaaqxv">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="552.500244140625" y="2098.158873858525" />
+        <di:waypoint xsi:type="dc:Point" x="815" y="2098" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1481.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_02nfugk_di" bpmnElement="SequenceFlow_02nfugk">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="514.500244140625" y="2172.4883107877877" />
+        <di:waypoint xsi:type="dc:Point" x="815" y="2172" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1518.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_08c4yuu_di" bpmnElement="SequenceFlow_08c4yuu">
+        <di:waypoint xsi:type="dc:Point" x="490" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="803.992919921875" y="591.1771982758607" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="589" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="714.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1afkt1p_di" bpmnElement="SequenceFlow_1afkt1p">
+        <di:waypoint xsi:type="dc:Point" x="490" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="801.5" y="1191.2597357571192" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1189" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1027" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_06lct64_di" bpmnElement="SequenceFlow_06lct64">
+        <di:waypoint xsi:type="dc:Point" x="490" y="860" />
+        <di:waypoint xsi:type="dc:Point" x="774.500244140625" y="516.8477613465984" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="515" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="665" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0brx95f_di" bpmnElement="SequenceFlow_0brx95f">
+        <di:waypoint xsi:type="dc:Point" x="465" y="835" />
+        <di:waypoint xsi:type="dc:Point" x="741.500244140625" y="442.5183244173359" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="441" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="628" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_09za89b_di" bpmnElement="SequenceFlow_09za89b">
+        <di:waypoint xsi:type="dc:Point" x="465" y="835" />
+        <di:waypoint xsi:type="dc:Point" x="702.500244140625" y="368.18888748807336" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="366" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="590.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0dx05cy_di" bpmnElement="SequenceFlow_0dx05cy">
+        <di:waypoint xsi:type="dc:Point" x="465" y="835" />
+        <di:waypoint xsi:type="dc:Point" x="648.500244140625" y="293.8594505588109" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="292" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="553.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0c9iavd_di" bpmnElement="SequenceFlow_0c9iavd">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="465.5084674817751" y="2246.594226693471" />
+        <di:waypoint xsi:type="dc:Point" x="815" y="2247" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1556" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_08ris9a_di" bpmnElement="SequenceFlow_08ris9a">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="755.3333129882812" y="1624.5" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1625" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1245" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0u8wwpx_di" bpmnElement="SequenceFlow_0u8wwpx">
+        <di:waypoint xsi:type="dc:Point" x="465" y="885" />
+        <di:waypoint xsi:type="dc:Point" x="743.3333129882812" y="1693.8294369292626" />
+        <di:waypoint xsi:type="dc:Point" x="817" y="1694" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="435" y="1279.5" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1yrbc17_di" bpmnElement="SequenceFlow_1yrbc17">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1556" />
+        <di:waypoint xsi:type="dc:Point" x="1122.177683906305" y="1556.1416965380915" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="974.5888419531525" y="1531.0708482690457" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_021qikt_di" bpmnElement="SequenceFlow_021qikt">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1482" />
+        <di:waypoint xsi:type="dc:Point" x="1098.4407933941168" y="1482.0357806324082" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="962.7203966970584" y="1457.017890316204" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1nfbccv_di" bpmnElement="SequenceFlow_1nfbccv">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1407" />
+        <di:waypoint xsi:type="dc:Point" x="1082.317509608682" y="1407.7063437031456" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="954.658754804341" y="1382.3531718515728" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0rte4g0_di" bpmnElement="SequenceFlow_0rte4g0">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1333" />
+        <di:waypoint xsi:type="dc:Point" x="1095.1077578036934" y="1333.376906773883" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="961.0538789018467" y="1308.1884533869415" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0po2gld_di" bpmnElement="SequenceFlow_0po2gld">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1259" />
+        <di:waypoint xsi:type="dc:Point" x="1116.7518565450641" y="1259.0474698446208" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="971.8759282725321" y="1234.0237349223103" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_03w25vf_di" bpmnElement="SequenceFlow_03w25vf">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1189" />
+        <di:waypoint xsi:type="dc:Point" x="1103.7922103646345" y="1189.9415539389374" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="965.3961051823172" y="1164.4707769694687" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1jwhic4_di" bpmnElement="SequenceFlow_1jwhic4">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1125" />
+        <di:waypoint xsi:type="dc:Point" x="1105.5291008768227" y="1125.6121170096749" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="966.2645504384113" y="1100.3060585048374" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1c4trkf_di" bpmnElement="SequenceFlow_1c4trkf">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1066" />
+        <di:waypoint xsi:type="dc:Point" x="1103.7922103646345" y="1066.2826800804123" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="965.3961051823172" y="1041.1413400402062" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1xet0zk_di" bpmnElement="SequenceFlow_1xet0zk">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1001" />
+        <di:waypoint xsi:type="dc:Point" x="1089.8970862671288" y="1001.9532431511499" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="958.4485431335644" y="976.4766215755749" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0pvzj90_di" bpmnElement="SequenceFlow_0pvzj90">
+        <di:waypoint xsi:type="dc:Point" x="917" y="932" />
+        <di:waypoint xsi:type="dc:Point" x="1084.6864147305641" y="932.6238062218875" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="955.8432073652821" y="907.3119031109438" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1qn0q7d_di" bpmnElement="SequenceFlow_1qn0q7d">
+        <di:waypoint xsi:type="dc:Point" x="917" y="763" />
+        <di:waypoint xsi:type="dc:Point" x="1096.7039028819286" y="763.2943692926249" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="961.8519514409643" y="738.1471846463124" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0064d0j_di" bpmnElement="SequenceFlow_0064d0j">
+        <di:waypoint xsi:type="dc:Point" x="917" y="664" />
+        <di:waypoint xsi:type="dc:Point" x="1099.4407933941168" y="664.1884533869415" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="963.2203966970584" y="639.0942266934708" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1hgownw_di" bpmnElement="SequenceFlow_1hgownw">
+        <di:waypoint xsi:type="dc:Point" x="917" y="589" />
+        <di:waypoint xsi:type="dc:Point" x="1101.177683906305" y="589.859016457679" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="964.0888419531525" y="564.4295082288395" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_12j2oy1_di" bpmnElement="SequenceFlow_12j2oy1">
+        <di:waypoint xsi:type="dc:Point" x="917" y="515" />
+        <di:waypoint xsi:type="dc:Point" x="1089.0194503209875" y="515.5295795284167" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="958.0097251604938" y="490.26478976420833" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_02n7zpq_di" bpmnElement="SequenceFlow_02n7zpq">
+        <di:waypoint xsi:type="dc:Point" x="917" y="441" />
+        <di:waypoint xsi:type="dc:Point" x="1099.4407933941168" y="441.2001425991541" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="963.2203966970584" y="416.10007129957705" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0n03uoe_di" bpmnElement="SequenceFlow_0n03uoe">
+        <di:waypoint xsi:type="dc:Point" x="917" y="366" />
+        <di:waypoint xsi:type="dc:Point" x="1092.493231345364" y="366.87070566989155" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="959.746615672682" y="341.4353528349458" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0zdt8hm_di" bpmnElement="SequenceFlow_0zdt8hm">
+        <di:waypoint xsi:type="dc:Point" x="917" y="292" />
+        <di:waypoint xsi:type="dc:Point" x="1090.7563408331757" y="292.5412687406291" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="958.8781704165879" y="267.27063437031455" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0hkq6gn_di" bpmnElement="SequenceFlow_0hkq6gn">
+        <di:waypoint xsi:type="dc:Point" x="917" y="218" />
+        <di:waypoint xsi:type="dc:Point" x="1095.2301218575521" y="221.14999389648438" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="961.1150609287761" y="194.5749969482422" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1t6qreo_di" bpmnElement="SequenceFlow_1t6qreo">
+        <di:waypoint xsi:type="dc:Point" x="917" y="143" />
+        <di:waypoint xsi:type="dc:Point" x="1123.7572605647515" y="143.88239488210414" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="975.3786302823758" y="118.44119744105205" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_08dsft3_di" bpmnElement="SequenceFlow_08dsft3">
+        <di:waypoint xsi:type="dc:Point" x="917" y="69" />
+        <di:waypoint xsi:type="dc:Point" x="1117.611111111111" y="69.55295795284172" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="853" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="972.3055555555555" y="44.27647897642089" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0efibzj_di" bpmnElement="SequenceFlow_0efibzj">
+        <di:waypoint xsi:type="dc:Point" x="915" y="2247" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="2247.094226693471" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="970.8055555555555" y="2222.0471133467354" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_12xkck7_di" bpmnElement="SequenceFlow_12xkck7">
+        <di:waypoint xsi:type="dc:Point" x="915" y="2172" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="2172.9883107877877" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="970.8055555555555" y="2147.494155393894" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ptckb2_di" bpmnElement="SequenceFlow_0ptckb2">
+        <di:waypoint xsi:type="dc:Point" x="915" y="2098" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="2098.658873858525" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="970.8055555555555" y="2073.3294369292626" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_03e9x78_di" bpmnElement="SequenceFlow_03e9x78">
+        <di:waypoint xsi:type="dc:Point" x="915" y="2024" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="2024.3294369292628" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="970.8055555555555" y="1999.1647184646313" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0fpbslm_di" bpmnElement="SequenceFlow_0fpbslm">
+        <di:waypoint xsi:type="dc:Point" x="915" y="1950" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="1950" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="970.8055555555555" y="1925" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0svyd1g_di" bpmnElement="SequenceFlow_0svyd1g">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1882" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="1882.3177477170502" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="971.8055555555555" y="1857.158873858525" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_07r9pc5_di" bpmnElement="SequenceFlow_07r9pc5">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1817" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="1817.9883107877877" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="971.8055555555555" y="1792.4941553938938" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1mqp3z5_di" bpmnElement="SequenceFlow_1mqp3z5">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1758" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="1758.658873858525" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="971.8055555555555" y="1733.3294369292626" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0damx4d_di" bpmnElement="SequenceFlow_0damx4d">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1694" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="1694.3294369292626" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="971.8055555555555" y="1669.1647184646313" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ftccot_di" bpmnElement="SequenceFlow_1ftccot">
+        <di:waypoint xsi:type="dc:Point" x="917" y="1625" />
+        <di:waypoint xsi:type="dc:Point" x="1116.611111111111" y="1625" />
+        <di:waypoint xsi:type="dc:Point" x="1159.5" y="888" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="971.8055555555555" y="1600" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_045gxa4_di" bpmnElement="TextAnnotation_045gxa4">
+        <dc:Bounds x="-40" y="-5" width="100" height="30" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
